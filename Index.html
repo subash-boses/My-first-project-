@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      .cart-icon {
+        position: relative;
+        margin-left: -5px;
+        cursor: pointer;
+        color: white;
+        font-size: 22px;
+      }
+
+      #cart-count {
+        position: center;
+        top: -10px;
+        right: -10px;
+        background-color: red;
+        color: white;
+        font-size: 12px;
+        padding: 2px 6px;
+        border-radius: 50%;
+      }
+
+      .product button {
+        margin-top: 5px;
+        padding: 6px 12px;
+        font-size: 14px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .product button:hover {
+        background-color: #555;
+      }
+
+      body {
+        background-color: #F9FAFB;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      header {
+        margin-left: 0;
+        position: relative;
+        width: 100%;
+      }
+
+      .header-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .search-bar {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: auto;
+      }
+
+      .search-bar input[type="text"] {
+        padding: 8px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 14px;
+        outline: none;
+        width: 240px;
+      }
+
+      .product-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        padding: 10px;
+        max-width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+
+      .centered-result {
+        display: flex !important;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .product-list:has(.product:only-child) {
+        justify-content: left;
+      }
+
+      .product {
+        background-color: #f1f9f8;
+        padding: 4px;
+        border-radius: 8px;
+        font-size: 18px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(2, 2, 2, .6);
+        transition: transform 0.5s, box-shadow 0.2s;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .product:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(5, 24, 22, .9);
+      }
+
+      .frame,
+      .bionic,
+      .home,
+      .hand,
+      .print,
+      .resin {
+        max-height: 120px;
+        width: 120px;
+        border-radius: 8px;
+      }
+
+      .videos {
+        padding-top: 35px;
+        padding-left: 40px;
+        padding-bottom: 50px;
+      }
+
+      .video {
+        padding-left: 30px;
+        padding-top: 50px;
+      }
+
+      .follow-us {
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        padding: 10px;
+        max-width: 100%;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 0px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        justify-content: center;
+      }
+
+      .follow-us h2 {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #333;
+      }
+
+      .icons a {
+        gap: 0px;
+        padding: 12px;
+        text-decoration: none;
+        margin: 0 1px;
+        font-size: 30px;
+        
+      }
+
+      .fa-whatsapp {
+        color: #25D366;
+      }
+
+      .fa-youtube {
+        color: #FF0000;
+      }
+
+      .fa-instagram {
+        color: #C13584;
+      }
+
+      .fa-threads {
+        color: #000;
+      }
+
+      .fa-linkedin {
+        color: #0077B5;
+      }
+
+      .fa-telegram {
+        color: #0088cc;
+      }
+
+      .fa-facebook {
+        color: #4267B2;
+      }
+      footer{
+        text-align:center;
+        padding-top:1px;
+        color:white;
+        background-color:black;
+        padding-bottom:50px;
+      }
+      .imgs{
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        padding: 5% ;
+        width:90%;
+           box-shadow: 0 4px 8px rgba(2, 2, 2, .6);
+     
+           transition: transform 0.5s, box-shadow 0.2s;
+        border-radius:10px;
+      }
+
+      .imgs:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(5, 24, 22, .9);
+      }
+      
+      }
+      .review{ 
+        
+        padding:20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap:20px;
+        font-size:18px;
+        color:white;
+        background-color:grey;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <img
+        src="https://raw.githubusercontent.com/subash-boses/My-first-project-/b357cd412ed2117a97f5bccbbf68d1720f57b75b/banner3.jpg"
+        alt="Header Image"
+        class="header-img"
+      />
+      <div class="search-bar">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="🔍 search products..."
+          onkeyup="searchProducts()"
+        />
+        <span class="cart-icon" onclick="showCart()">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </span>
+      </div>
+    </header>
+
+    <div class="product-list" id="productList">
+      <div class="product" data-name="resin art">
+        <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/3402108e8939da8f79b0e40b8a310b733f23863a/rasin%20art.jpg" alt="resin art" class="resin">
+        <p>resin art</p>
+        <form action="resin.html">
+          <button type="submit">view more</button>
+        </form>
+      </div>
+
+      <div class="product" data-name="photo frame">
+        <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/3402108e8939da8f79b0e40b8a310b733f23863a/photograpy.jpg" alt="photography" class="frame">
+        <p>photography</p>
+        <form action="resin.html">
+          <button type="submit">view more</button>
+        </form>
+      </div>
+
+      <div class="product" data-name="bionic hand">
+        <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/3402108e8939da8f79b0e40b8a310b733f23863a/bionic%20hand.jpg" class="bionic">
+        <p>bionic hand</p>
+        <form action="about.html">
+          <button type="submit">view more</button>
+        </form>
+      </div>
+
+      <div class="product" data-name="home decor">
+        <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/3402108e8939da8f79b0e40b8a310b733f23863a/home%20decor.jpg" class="home">
+        <p>home decor</p>
+        <form action="about.html">
+          <button type="submit">view more</button>
+        </form>
+      </div>
+
+      <div class="product" data-name="hand embosing">
+        <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/3402108e8939da8f79b0e40b8a310b733f23863a/hand%20impposte.jpg" class="hand">
+        <p>hand embosing</p>
+        <form action="about.html">
+          <button type="submit">view more</button>
+        </form>
+      </div>
+
+      <div class="product" data-name="3d printing">
+        <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/3402108e8939da8f79b0e40b8a310b733f23863a/3d%20print.jpg" class="print">
+        <p>3d print</p>
+        <form action="about.html">
+          <button type="submit">view more</button>
+        </form>
+      </div>
+    </div>
+
+    <h2 class="video">videos</h2>
+    <iframe
+      width="150"
+      height="267"
+      src="https://www.youtube.com/embed/Qky27oRj0XI"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      class="videos"
+    ></iframe>
+    
+    
+    <div class="review">
+      
+      <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/d16666f84470a1ea87de5a57e6b7bf4b8fac8243/review.jpg" class="imgs">
+        <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/d16666f84470a1ea87de5a57e6b7bf4b8fac8243/review.jpg" class="imgs">
+          <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/d16666f84470a1ea87de5a57e6b7bf4b8fac8243/review.jpg" class="imgs">
+            <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/d16666f84470a1ea87de5a57e6b7bf4b8fac8243/review.jpg" class="imgs">
+             <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/d16666f84470a1ea87de5a57e6b7bf4b8fac8243/review.jpg" class="imgs">
+             
+              <img src="https://raw.githubusercontent.com/subash-boses/My-first-project-/d16666f84470a1ea87de5a57e6b7bf4b8fac8243/review.jpg" class="imgs">
+      
+    </div>
+   
+
+    <script>
+      let cart = [];
+
+      function addToCart(productName) {
+        cart.push(productName);
+        document.getElementById("cart-count").innerText = cart.length;
+        alert(`${productName} added to cart`);
+      }
+
+      function showCart() {
+        if (cart.length === 0) {
+          alert("Your cart is empty.");
+        } else {
+          alert("Cart Items:\n" + cart.join("\n"));
+        }
+      }
+
+      function searchProducts() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const products = document.querySelectorAll(".product");
+
+        products.forEach((product) => {
+          const name = product.dataset.name.toLowerCase();
+          if (name.includes(input)) {
+            product.style.display = "";
+          } else {
+            product.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+  <footer>
+    
+     
+     <p>@follow-us on</p>
+
+    <div class="follow-us">
+     
+      <div class="icons">
+  <a href="#" class="fab fa-whatsapp"></a>
+  <a href="https://youtube.com/@q-i-landrook7072?si=0fBPM1U_UAfu-9CI" class="fab fa-youtube"></a>
+  <a href="#" class="fab fa-instagram"></a>
+  
+  <a href="#" class="fa-threads">@</a>
+  <a href="#" class="fab fa-linkedin"></a>
+  <a href="#" class="fab fa-telegram"></a>
+  <a href="#" class="fab fa-facebook"></a>
+</div>
+    </div>
+  </footer>
+</html>
